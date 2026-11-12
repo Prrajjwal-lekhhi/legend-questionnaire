@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Legend and Saba Questionnaire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  /* Dark editorial palette: near-black canvas, warm cream ink, one green accent.
+     Mono for labels and numbers, serif only for quotes. */
+  :root {
+    --bg: #0d0d0d;
+    --card: #161616;
+    --surface: #1f1f1f;
+    --line: #2e2e2e;
+    --line-strong: #3a3a3a;
+
+    --ink: #e3dcc8;
+    --body: #bfb7a3;
+    --muted: #a79f8c;
+    --dim: #8f8875;
+
+    --green: #42ca80;
+    --green-hover: #349761;
+    --green-deep: #286d48;
+    --green-wash: rgba(66, 202, 128, 0.07);
+    --green-line: rgba(66, 202, 128, 0.28);
+
+    --warm: #f0dcb4;
+    --orange: #e8763a;
+    --orange-wash: rgba(232, 118, 58, 0.08);
+    --orange-line: rgba(232, 118, 58, 0.32);
+
+    --blue: #5b8ed6;
+    --blue-wash: rgba(91, 142, 214, 0.08);
+    --blue-line: rgba(91, 142, 214, 0.32);
+
+    --r-lg: 14px;
+    --r-md: 10px;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; scroll-padding-top: 70px; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--body);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  ::selection { background: var(--green-deep); color: var(--ink); }
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible, .dropzone:focus-within {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Sticky bar ---------- */
+  .bar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(13, 13, 13, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar-inner {
+    max-width: 860px; margin: 0 auto; padding: 11px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .bar nav { display: flex; gap: 16px; white-space: nowrap; }
+  .bar nav a { color: var(--muted); }
+  .bar nav a:hover { color: var(--ink); text-decoration: none; }
+  .bar .status { color: var(--dim); text-align: right; white-space: nowrap; }
+  .bar .status b { color: var(--green); font-weight: 500; }
+  .bar .saved { margin-left: 10px; }
+  .meter { height: 2px; background: transparent; }
+  .meter i { display: block; height: 100%; width: 0; background: var(--green); transition: width 0.25s ease; }
+  @media (max-width: 560px) { .bar .saved { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 68px 20px 44px; border-bottom: 1px solid var(--line); }
+  .hero-inner { max-width: 820px; margin: 0 auto; }
+  .eyebrow {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: "Alliance No.2", var(--sans);
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--warm); }
+  .hero p { font-size: 1.05rem; max-width: 640px; }
+  .hero p + p { margin-top: 12px; }
+  .pills { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.02em;
+    color: var(--body);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 5px 12px;
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 96px; }
+
+  section {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 30px 32px 26px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 560px) { section { padding: 22px 18px 18px; } }
+
+  .part {
+    margin: 56px 0 22px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line-strong);
+  }
+  .part .label {
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--green);
+  }
+  .part h2 {
+    font-family: "Alliance No.2", var(--sans);
+    font-size: clamp(1.7rem, 4.4vw, 2.3rem);
+    font-weight: 500; letter-spacing: -0.03em; line-height: 1.12;
+    color: var(--ink);
+    margin: 8px 0 10px;
+  }
+  .part p { max-width: 640px; }
+
+  .sec-head { display: flex; align-items: baseline; gap: 14px; }
+  .sec-num {
+    flex: 0 0 auto;
+    font-family: var(--mono); font-size: 0.74rem; font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--green);
+  }
+  section h3 {
+    font-family: "Alliance No.2", var(--sans);
+    font-size: 1.32rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.25;
+    color: var(--ink);
+  }
+  .section-note { color: var(--muted); font-size: 0.93rem; margin-top: 6px; }
+  .sec-body { margin-top: 24px; }
+
+  .field { margin-bottom: 30px; }
+  .field:last-child { margin-bottom: 6px; }
+  .q {
+    display: block;
+    font-weight: 600; font-size: 1.01rem; line-height: 1.4;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    margin-bottom: 8px;
+  }
+  .q .id {
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+    color: var(--dim); letter-spacing: 0.06em;
+    margin-right: 9px;
+    vertical-align: 1px;
+  }
+  .hint { color: var(--muted); font-size: 0.9rem; margin-bottom: 11px; }
+  .hint ul { margin: 8px 0 0 18px; }
+  .hint li { margin-bottom: 4px; }
+
+  textarea, input[type="text"], input[type="email"] {
+    width: 100%;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-md);
+    padding: 12px 14px;
+    font-family: inherit; font-size: 0.96rem; line-height: 1.5;
+    color: var(--ink);
+    background: #111111;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  textarea { min-height: 104px; resize: vertical; }
+  textarea.short { min-height: 72px; }
+  textarea::placeholder, input::placeholder { color: #6f695b; }
+  textarea:focus, input[type="text"]:focus, input[type="email"]:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(66, 202, 128, 0.16);
+  }
+  .row { display: flex; gap: 18px; flex-wrap: wrap; }
+  .row .field { flex: 1 1 220px; }
+  .sub { display: block; font-size: 0.88rem; color: var(--muted); margin: 12px 0 8px; }
+
+  /* ---------- Chips ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  .chips label { position: relative; cursor: pointer; }
+  .chips input { position: absolute; opacity: 0; width: 100%; height: 100%; inset: 0; cursor: pointer; margin: 0; }
+  .chips span {
+    display: inline-block;
+    font-size: 0.88rem;
+    color: var(--body);
+    background: #111111;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 7px 14px;
+    transition: border-color 0.12s, background 0.12s, color 0.12s;
+    user-select: none;
+  }
+  .chips label:hover span { border-color: var(--dim); }
+  .chips input:checked + span { background: var(--green-wash); border-color: var(--green); color: var(--green); }
+  .chips input:focus-visible + span { outline: 2px solid var(--green); outline-offset: 2px; }
+
+  /* ---------- Recap panels ---------- */
+  .known {
+    background: var(--green-wash);
+    border: 1px solid var(--green-line);
+    border-radius: var(--r-md);
+    padding: 15px 17px 16px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: var(--body);
+  }
+  .known .tag {
+    display: inline-block;
+    font-family: var(--mono); font-size: 0.66rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 9px;
+  }
+  .known ul { margin: 6px 0 0 18px; }
+  .known li { margin-bottom: 4px; }
+  .known p + p { margin-top: 8px; }
+  .known table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .known td { padding: 7px 12px 7px 0; vertical-align: top; border-bottom: 1px solid var(--green-line); }
+  .known td:first-child {
+    font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--ink); white-space: nowrap; width: 112px; padding-top: 9px;
+  }
+  .known tr:last-child td { border-bottom: none; padding-bottom: 0; }
+  @media (max-width: 560px) {
+    .known td { display: block; padding: 0 0 8px; border-bottom: none; }
+    .known td:first-child { width: auto; padding: 8px 0 2px; }
+  }
+  .known blockquote {
+    font-family: var(--serif); font-style: italic;
+    font-size: 1.16rem; line-height: 1.5;
+    color: var(--ink);
+  }
+  .known cite { display: block; margin-top: 9px; font-style: normal; font-size: 0.82rem; color: var(--muted); }
+
+  .known.ours { background: var(--orange-wash); border-color: var(--orange-line); }
+  .known.ours .tag { color: var(--orange); }
+  .known.ours td { border-bottom-color: var(--orange-line); }
+
+  .known.mail { background: var(--blue-wash); border-color: var(--blue-line); }
+  .known.mail .tag { color: var(--blue); }
+
+  .confirm { font-size: 0.9rem; color: var(--warm); margin-bottom: 10px; }
+  .confirm strong { color: var(--warm); }
+
+  /* ---------- File upload ---------- */
+  .dropzone {
+    display: block;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--r-md);
+    background: #111111;
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--body);
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .dropzone:hover, .dropzone.drag { border-color: var(--green); background: var(--green-wash); }
+  .dropzone .dz-icon {
+    width: 38px; height: 38px; margin: 0 auto 10px;
+    border-radius: 10px; background: var(--surface); border: 1px solid var(--line-strong);
+    display: grid; place-items: center; color: var(--green);
+  }
+  .dropzone .dz-sub { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+  .dropzone input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+  .file-list { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .file-list .chip {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-md);
+    padding: 8px 12px; font-size: 0.86rem; color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+  .file-list .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); flex: 0 0 auto; }
+  .file-list .size { color: var(--muted); }
+
+  /* ---------- Submit ---------- */
+  .submit-block { text-align: center; padding-top: 22px; }
+  button[type="submit"] {
+    background: var(--green);
+    color: #0d0d0d;
+    border: none;
+    border-radius: var(--r-md);
+    padding: 15px 44px;
+    font-family: var(--mono); font-size: 0.86rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  button[type="submit"]:hover { background: var(--green-hover); }
+  .submit-note { color: var(--muted); font-size: 0.88rem; margin-top: 14px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-inner">
+    <nav aria-label="Jump to">
+      <a href="#part-a">A / Legend</a>
+      <a href="#part-b">B / Saba</a>
+    </nav>
+    <div class="status"><b id="count">0</b> of <span id="total">0</span> answered<span class="saved" id="saved"></span></div>
+  </div>
+  <div class="meter"><i id="meter"></i></div>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Onboarding / Reddit, AI answers, Saba's socials</span>
+    <h1>Legend <span>and</span> Saba questionnaire</h1>
+    <p>This form has two parts. Part A is about Legend: how I should talk about it on Reddit, and what ChatGPT says when someone asks for an AI pendant. Part B is about Saba and how he wants to show up on Instagram and LinkedIn.</p>
+    <p>I've read the site, the AI instructions page and our email thread, so a lot of this is me playing back what I already have. Where I've got it right, the answer is one word.</p>
+    <div class="pills">
+      <span class="pill">About 15 minutes a part</span>
+      <span class="pill">Every question optional</span>
+      <span class="pill">Saves as you type</span>
+      <span class="pill">Voice notes welcome</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<form id="qform" action="https://formbold.com/s/3LjDW" method="POST" enctype="multipart/form-data">
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">00</span>
+    <h3>Before you start</h3>
+  </div>
+  <div class="sec-body">
+    <div class="row">
+      <div class="field">
+        <label class="q" for="name">Name</label>
+        <input type="text" id="name" name="name" autocomplete="name">
+      </div>
+      <div class="field">
+        <label class="q" for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email">
+      </div>
+    </div>
+    <div class="known">
+      <span class="tag">From your site</span>
+      <p>Green blocks are what I took from legendmemory.ai. If I've understood it, write <strong>yes</strong>. If part of it is off, tell me which part.</p>
+    </div>
+    <div class="known mail">
+      <span class="tag">From our emails</span>
+      <p>Blue blocks are things one of you told me by email or on the call.</p>
+    </div>
+    <div class="known ours">
+      <span class="tag">My research</span>
+      <p>Orange blocks are things I found on my own. They need your reaction more than a yes.</p>
+    </div>
+    <p class="hint" style="margin-top:16px;">Rough answers are better than polished ones. If typing is a chore, send me a voice note on Slack with the question number (A7, B12) and I'll take it from there. Your answers are kept in this browser while you type, so you can close the tab and come back. More than one person can fill this in: submit it twice and I'll merge them.</p>
+  </div>
+</section>
+
+<!-- ============================ PART A ============================ -->
+<div class="part" id="part-a">
+  <span class="label">Part A</span>
+  <h2>Legend</h2>
+  <p>For Reddit and AI answers. Anyone on the team can take this part.</p>
+</div>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">A / 01</span>
+    <h3>What I'm working from</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="a1_facts"><span class="id">A1</span>The facts, as I have them</label>
+    <div class="known">
+      <span class="tag">From your site / understood correctly?</span>
+      <table>
+        <tr><td>Product</td><td>Legend One, an AI memory pendant made for people with ADHD. Worn at chest height, always on, nothing to press. Conversations become transcripts, recaps, daily summaries, to-dos and reminders in the Legend App.</td></tr>
+        <tr><td>Audio</td><td>Used only to create the transcript and not kept in the account. If the pendant is away from the phone, audio is held on it until it syncs, then deleted. No playback. A Halo light shows whenever it is transcribing.</td></tr>
+        <tr><td>Hardware</td><td>24 g, three microphones with speaker separation, Personal Orbit speaker, more than 150 languages, all-day battery, USB-C charging in about 2 hours, splash resistant. Gold, Brushed Silver, Matte Black.</td></tr>
+        <tr><td>Price</td><td>$499 covers the pendant and the first year of membership, then $499 a year. $1,497 over three years. Unlimited AI with no minute limits, an annual hardware upgrade, Legend Care support.</td></tr>
+        <tr><td>Buying</td><td>Free worldwide shipping, ships within 30 days, 30-day returns, HSA/FSA at checkout for eligible US customers.</td></tr>
+        <tr><td>Not for</td><td>People whose important conversations are all scheduled, who need to play audio back, or who want meeting minutes only. You say this on your own pages.</td></tr>
+        <tr><td>Company</td><td>Legend Memory AI, operated by Favs HQ, Inc. Saba Karim is co-founder and CEO, Zach Eisenhauer is co-founder and CTO. The story starts in Australia.</td></tr>
+        <tr><td>Stage</td><td>Batch 3 ships before Christmas. First wearers average 11.6 hours a day.</td></tr>
+      </table>
+    </div>
+    <div class="confirm">Understood correctly? Write <strong>yes</strong>, or fix the row that is off.</div>
+    <div class="hint">I'll treat your <a href="https://legendmemory.ai/pages/ai-instructions" target="_blank" rel="noopener">AI instructions page</a> as the source of truth for wording. If anything on it is about to change (price, batch dates, the audio wording), say so here.</div>
+    <textarea id="a1_facts" name="a1_facts" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a2_goal_1000"><span class="id">A2</span>Where are you today, and by when do you need the 1,000?</label>
+    <div class="known mail">
+      <span class="tag">From our emails</span>
+      <p>Alkarim told me the aim is to sell about 1,000 devices, which helps close the round.</p>
+    </div>
+    <div class="hint">Units sold so far, the size of Batch 3, how many are left in it, and which countries buy most. Tell me which of these numbers can be said in public and which stay between us.</div>
+    <textarea id="a2_goal_1000" name="a2_goal_1000"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a3_channels_tracking"><span class="id">A3</span>How do people find Legend today, and how will we know Reddit worked?</label>
+    <div class="hint">Which channels send orders right now: ads, Instagram, email, press, word of mouth. Then tracking. Can I get a discount code or a tagged link that is only used on Reddit, and is there a "how did you hear about us?" question at checkout? Without one of those, a Reddit sale looks like someone typing the URL, and we'll be guessing.</div>
+    <textarea id="a3_channels_tracking" name="a3_channels_tracking"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">A / 02</span>
+    <h3>Customers and their words</h3>
+  </div>
+  <p class="section-note">On Reddit the exact words people use matter more than a tidy summary of them.</p>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="a4_customer_words"><span class="id">A4</span>How do customers describe Legend in their own words?</label>
+    <div class="hint">Paste reviews, support chats, DMs and onboarding call notes as they are, typos included. Your home page has two I'd use tomorrow: "There is a level of security that this brings to me" and "The one thing I was looking for in life was this." More like those, and the unhappy ones too. There's an upload box at the end if it is easier to send a file.</div>
+    <textarea id="a4_customer_words" name="a4_customer_words" style="min-height:140px;"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a5_buyers"><span class="id">A5</span>Who buys?</label>
+    <div class="known ours">
+      <span class="tag">My guess / react to this</span>
+      <ul>
+        <li>A working professional with ADHD, often diagnosed as an adult, in a meeting-heavy job</li>
+        <li>A parent or partner with ADHD who carries the family logistics</li>
+        <li>An AI wearable early adopter, for example someone who had a Limitless or a Plaud</li>
+        <li>Someone buying it as a gift for a partner, parent or grown-up child with ADHD, more so with a Christmas batch</li>
+      </ul>
+    </div>
+    <div class="confirm">Correct my guesses. Then for each one that is real: what makes them buy, and what holds them back?</div>
+    <textarea id="a5_buyers" name="a5_buyers" style="min-height:140px;"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a6_conversations"><span class="id">A6</span>Which everyday conversations does Legend belong in?</label>
+    <div class="hint">The problems your customers already talk about where Legend fits without forcing it. Forgetting what people tell you, keeping promises at work and at home, tools that help with ADHD, whether AI wearables are worth the money. Mark the ones that matter most.</div>
+    <textarea id="a6_conversations" name="a6_conversations"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a7_hooks"><span class="id">A7</span>Which stories and hooks have sold pendants so far?</label>
+    <div class="hint">From ads, email, social, press or sales calls. The ones I noticed on the site: "remember to write it down" being the step that fails, the shame of forgetting, jewellery first and gadget second, text only with no audio kept. Tell me which of these moved orders and which only sounded good in a meeting.</div>
+    <textarea id="a7_hooks" name="a7_hooks"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">A / 03</span>
+    <h3>The product, honestly</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="a8_lead_features"><span class="id">A8</span>What should I lead with? Rank them.</label>
+    <div class="hint">Always-on capture with no button, auto to-dos and reminders, daily summaries, a transcript you can talk to, asking Legend out loud, no audio kept, family life, the jewellery design.</div>
+    <textarea id="a8_lead_features" name="a8_lead_features"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a9_shortfalls"><span class="id">A9</span>Where does Legend fall short today?</label>
+    <div class="hint">Reddit finds the weak spots within a day, so I'd like to hear them from you first. Calls taken on headphones, noisy rooms, accents, battery, sync delays, iPhone or Android gaps, missed or wrong to-dos. If a fix has a date, give me the date.</div>
+    <textarea id="a9_shortfalls" name="a9_shortfalls"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a10_proof"><span class="id">A10</span>What proof can I point to?</label>
+    <div class="hint">Number of wearers, batches shipped, wear time, review counts, press, customers happy to be quoted by name. Mark what is public and what must stay private.</div>
+    <textarea id="a10_proof" name="a10_proof"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">A / 04</span>
+    <h3>Competitors and the hard questions</h3>
+  </div>
+  <p class="section-note">These three questions will show up under almost every thread. I'd like your real answers before I need them.</p>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="a11_competitors"><span class="id">A11</span>Who do you lose to?</label>
+    <div class="known">
+      <span class="tag">From your compare page / understood correctly?</span>
+      <table>
+        <tr><td>Always on</td><td>Bee Pioneer, Omi, and Legend</td></tr>
+        <tr><td>Press to record</td><td>Plaud NotePin S, soundcore Work, Vibe Dot, SwitchBot AI MindClip, Pocket</td></tr>
+        <tr><td>Gone</td><td>The Limitless Pendant is no longer sold and the Humane AI Pin has been shut down</td></tr>
+      </table>
+    </div>
+    <div class="confirm">Which two or three come up in real buying decisions, and which one do you lose to most often? One line each on why a buyer picks Legend instead.</div>
+    <textarea id="a11_competitors" name="a11_competitors"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a12_price_objection"><span class="id">A12</span>"Why would I pay $499 a year when Bee costs a fraction of that?"</label>
+    <div class="hint">Your honest answer, the way you'd say it to a friend.</div>
+    <textarea id="a12_price_objection" name="a12_price_objection"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a13_privacy_objection"><span class="id">A13</span>"An always-listening pendant around other people is creepy, and probably illegal."</label>
+    <div class="hint">How do you answer that, and what do you tell wearers about consent, workplaces and medical appointments?</div>
+    <textarea id="a13_privacy_objection" name="a13_privacy_objection"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a14_one_thing"><span class="id">A14</span>What is the one thing someone should remember about Legend after reading a thread?</label>
+    <textarea id="a14_one_thing" name="a14_one_thing" class="short"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">A / 05</span>
+    <h3>Reddit</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="a15_reddit_history"><span class="id">A15</span>What is your history on Reddit?</label>
+    <div class="known ours">
+      <span class="tag">My research</span>
+      <p>When I looked in late October, people who had lost their Limitless were asking for alternatives in r/ADHD, r/adhdwomen, r/productivity and r/wearables. None of the threads I read mentioned Legend.</p>
+    </div>
+    <div class="hint">Has anyone on the team posted or commented about Legend? Any accounts I should know about, any removals or bans? Do Saba or Zach have personal Reddit accounts with some history on them, and would either of you write a founder post or answer questions under your own name?</div>
+    <textarea id="a15_reddit_history" name="a15_reddit_history"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a16_words_limits"><span class="id">A16</span>Which words do I use, and what is off limits?</label>
+    <div class="hint">Words first: "memory pendant" or "AI wearable" or "recorder", "wearers" or "users", "membership" or "subscription". Then anything I should stay away from: discounts, price comparisons, naming a competitor first, recording-consent law, children, medication, customer groups you don't want. I already have the medical line from your site: not a medical device, and no claims about treating ADHD.</div>
+    <textarea id="a16_words_limits" name="a16_words_limits"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a17_offers_ugc"><span class="id">A17</span>What can I offer people?</label>
+    <div class="known mail">
+      <span class="tag">From our emails</span>
+      <p>Alkarim said the team is very interested in UGC alongside Reddit.</p>
+    </div>
+    <div class="hint">A code for Reddit, pendants that could go to creators or to long-time Redditors to try and review, customers who would film something. If there's a budget or a number of units set aside for this, tell me the number.</div>
+    <textarea id="a17_offers_ugc" name="a17_offers_ugc"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">A / 06</span>
+    <h3>AI answers</h3>
+  </div>
+  <p class="section-note">What ChatGPT, Gemini, Claude and Perplexity say when someone asks about AI pendants.</p>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="a18_names_domains"><span class="id">A18</span>Which name and which domain is the real one for the next three months?</label>
+    <div class="known ours">
+      <span class="tag">My research</span>
+      <table>
+        <tr><td>Domains</td><td>legendmemory.ai is the store, and it is the only site AI engines cite for Legend today. shop.legendsuperintelligence.com is the test site and is hidden from search. legendmemoryai.com was still up when I checked in early November.</td></tr>
+        <tr><td>Names</td><td>Legend Memory AI on the store, Legend Superintelligence and "Genesis Edition" on the test site.</td></tr>
+      </table>
+    </div>
+    <div class="hint">AI engines decide whether these are one brand or two from signals like this. Is a move to the Superintelligence name planned, and roughly when? What should happen to legendmemoryai.com?</div>
+    <textarea id="a18_names_domains" name="a18_names_domains"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a19_prompts"><span class="id">A19</span>Which questions do you want Legend to be the answer to?</label>
+    <div class="known ours">
+      <span class="tag">My research</span>
+      <p>Profound, ChatGPT, United States, September 2026: about 116,000 prompts a month on "AI pendant". Prompts that name Legend were too few to register.</p>
+    </div>
+    <div class="hint">My starting set. Correct it and add to it.
+      <ul>
+        <li>"Best AI pendant for ADHD"</li>
+        <li>"Limitless pendant alternative"</li>
+        <li>"AI wearable that doesn't keep audio"</li>
+        <li>"Is Legend One worth $499 a year?"</li>
+        <li>"Bee vs Omi vs Legend"</li>
+        <li>"How do I remember conversations with ADHD?"</li>
+      </ul>
+      If a customer has ever told you an AI assistant sent them, I'd love to know what they asked it.</div>
+    <textarea id="a19_prompts" name="a19_prompts"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a20_other_sites"><span class="id">A20</span>Which other sites do you run?</label>
+    <div class="known">
+      <span class="tag">From your compare page</span>
+      <p>It links to plaudalternative.com, limitlessalternative.com and aimemorypendant.com, and says all three openly promote Legend.</p>
+    </div>
+    <div class="hint">Are those yours? Anything else I should know about, so I don't cite one of your own sites as an independent source by mistake.</div>
+    <textarea id="a20_other_sites" name="a20_other_sites" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a21_site_access"><span class="id">A21</span>Who changes the site, and what can I see?</label>
+    <div class="hint">Who makes changes on the Shopify store and how quickly a small one goes live. Whether I can get view access to Shopify analytics, Search Console and GA4. Whether you already track AI visibility in any tool.</div>
+    <textarea id="a21_site_access" name="a21_site_access" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="a22_brand_instagram"><span class="id">A22</span>What is the story with @legendmemoryai on Instagram?</label>
+    <div class="known ours">
+      <span class="tag">My guess</span>
+      <p>The account looks like it had a life before Legend, with older ADHD meme posts still on the grid. That is only what it looked like from scrolling it.</p>
+    </div>
+    <div class="hint">If I'm right, can the older posts be archived? And who runs the brand account day to day?</div>
+    <textarea id="a22_brand_instagram" name="a22_brand_instagram" class="short"></textarea>
+  </div>
+  </div>
+</section>
+
+<!-- ============================ PART B ============================ -->
+<div class="part" id="part-b">
+  <span class="label">Part B</span>
+  <h2>Saba</h2>
+  <p>Saba, this part is yours. Answer the way you talk. Most questions have things to tap so you don't have to type everything.</p>
+</div>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">B / 01</span>
+    <h3>Accounts and time</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="b1_accounts"><span class="id">B1</span>Which accounts are we working on?</label>
+    <div class="hint">Your Instagram handle, your LinkedIn URL, and anything else you use (TikTok, X, YouTube). If I had to start with one, which should it be? Add a post or two you were happy with.</div>
+    <textarea id="b1_accounts" name="b1_accounts" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b2_time_logistics"><span class="id">B2</span>How much of you do I get?</label>
+    <div class="hint">Where you're based and any travel coming up. How many hours a week you can give to filming. Who films and edits for you today, if anyone. How you'd like to approve posts and how quickly you tend to reply.</div>
+    <textarea id="b2_time_logistics" name="b2_time_logistics"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">B / 02</span>
+    <h3>Your story</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="b3_described_as"><span class="id">B3</span>After a month of following you, how should someone describe you?</label>
+    <div class="hint">One or two sentences. "The founder who talks honestly about living with ADHD", "the person building the most beautiful AI wearable", "a builder who shows the messy parts".</div>
+    <textarea id="b3_described_as" name="b3_described_as" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <span class="q" id="b4_label"><span class="id">B4</span>Which parts of your story are open?</span>
+    <div class="hint">Tap everything you're happy to talk about in public.</div>
+    <div class="chips" data-for="b4_story_open" role="group" aria-labelledby="b4_label">
+      <label><input type="checkbox" value="ADHD and memory"><span>ADHD and memory</span></label>
+      <label><input type="checkbox" value="Why I started Legend"><span>Why I started Legend</span></label>
+      <label><input type="checkbox" value="Earlier ventures"><span>Earlier ventures</span></label>
+      <label><input type="checkbox" value="Failures"><span>Failures</span></label>
+      <label><input type="checkbox" value="Family and relationships"><span>Family and relationships</span></label>
+      <label><input type="checkbox" value="Daily routines"><span>Daily routines</span></label>
+      <label><input type="checkbox" value="Fundraising and money"><span>Fundraising and money</span></label>
+      <label><input type="checkbox" value="Working with Zach"><span>Working with Zach</span></label>
+    </div>
+    <input type="hidden" id="b4_story_open" name="b4_story_open">
+    <label class="sub" for="b4_story_limits">What is fine in small doses, and what is private?</label>
+    <textarea id="b4_story_limits" name="b4_story_limits" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b5_specific_time"><span class="id">B5</span>Tell me about one specific time this happened.</label>
+    <div class="known">
+      <span class="tag">From your About page</span>
+      <blockquote>"It showed up in all my relationships. I cared deeply, but it did not always look that way."</blockquote>
+      <cite>Saba Karim, co-founder and CEO</cite>
+    </div>
+    <div class="hint">A birthday, a promise, a name, a conversation you had to have twice. The more exact the memory, the better the post. If you'd rather not go there, say so and I'll leave it alone.</div>
+    <textarea id="b5_specific_time" name="b5_specific_time" style="min-height:140px;"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b6_retold_moments"><span class="id">B6</span>Which moments do you find yourself retelling?</label>
+    <div class="hint">From your life or from building Legend. The stories you tell at dinner usually make the best content.</div>
+    <textarea id="b6_retold_moments" name="b6_retold_moments"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">B / 03</span>
+    <h3>Goals and audience</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <span class="q" id="b7_label"><span class="id">B7</span>What should your socials do for you and for Legend?</span>
+    <div class="chips" data-for="b7_goals" role="group" aria-labelledby="b7_label">
+      <label><input type="checkbox" value="Drive Legend orders"><span>Drive Legend orders</span></label>
+      <label><input type="checkbox" value="Build my personal brand"><span>Build my personal brand</span></label>
+      <label><input type="checkbox" value="Grow a community of people with ADHD"><span>Grow a community of people with ADHD</span></label>
+      <label><input type="checkbox" value="Attract investors"><span>Attract investors</span></label>
+      <label><input type="checkbox" value="Attract press"><span>Attract press</span></label>
+      <label><input type="checkbox" value="Attract hires"><span>Attract hires</span></label>
+      <label><input type="checkbox" value="Reduce stigma around ADHD"><span>Reduce stigma around ADHD</span></label>
+    </div>
+    <input type="hidden" id="b7_goals" name="b7_goals">
+    <label class="sub" for="b7_goals_first">Which one comes first? And what would make you say "this is working" after 90 days?</label>
+    <textarea id="b7_goals_first" name="b7_goals_first" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b8_audience"><span class="id">B8</span>Who do you most want to reach?</label>
+    <div class="hint">Adults with ADHD, their partners and parents, other founders, tech and design people, investors, people who have never heard of Legend.</div>
+    <textarea id="b8_audience" name="b8_audience" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b9_split_action"><span class="id">B9</span>How much Legend, how much you? And what should someone do after watching?</label>
+    <div class="hint">A rough split is enough, for example 30% product and 70% personal. Then the action: follow you, order Legend, join Memory Lane, send you a DM, share it with someone who has ADHD.</div>
+    <textarea id="b9_split_action" name="b9_split_action" class="short"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">B / 04</span>
+    <h3>What you talk about</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="b10_hour_topics"><span class="id">B10</span>Which topics could you talk about for an hour without notes?</label>
+    <div class="hint">ADHD and memory, building hardware, design and jewellery, AI and privacy, founder life, productivity systems that failed you.</div>
+    <textarea id="b10_hour_topics" name="b10_hour_topics"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b11_contrarian"><span class="id">B11</span>What do you believe that most people in your space would disagree with?</label>
+    <div class="hint">List as many as come to mind. Strong opinions travel furthest.</div>
+    <textarea id="b11_contrarian" name="b11_contrarian"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b12_asked_often"><span class="id">B12</span>What do people ask you again and again?</label>
+    <div class="hint">In DMs, at events, at dinner, from investors.</div>
+    <textarea id="b12_asked_often" name="b12_asked_often" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b13_behind_scenes"><span class="id">B13</span>What can we show from behind the scenes?</label>
+    <div class="hint">Prototypes, the factory, packing orders, team calls, customer messages, numbers such as orders or wear time. Tell me what is fine to film and what is not.</div>
+    <textarea id="b13_behind_scenes" name="b13_behind_scenes" class="short"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">B / 05</span>
+    <h3>ADHD</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <span class="q" id="b14_label"><span class="id">B14</span>Which ADHD topics do you most want to talk about?</span>
+    <div class="chips" data-for="b14_adhd_topics" role="group" aria-labelledby="b14_label">
+      <label><input type="checkbox" value="Memory and forgetting"><span>Memory and forgetting</span></label>
+      <label><input type="checkbox" value="The shame around it"><span>The shame around it</span></label>
+      <label><input type="checkbox" value="Late diagnosis"><span>Late diagnosis</span></label>
+      <label><input type="checkbox" value="ADHD at work"><span>ADHD at work</span></label>
+      <label><input type="checkbox" value="Relationships and family"><span>Relationships and family</span></label>
+      <label><input type="checkbox" value="Parenting"><span>Parenting</span></label>
+      <label><input type="checkbox" value="Building a company with ADHD"><span>Building a company with ADHD</span></label>
+      <label><input type="checkbox" value="Tools and systems that failed me"><span>Tools and systems that failed me</span></label>
+    </div>
+    <input type="hidden" id="b14_adhd_topics" name="b14_adhd_topics">
+    <label class="sub" for="b14_adhd_wish">What do you wish people understood about ADHD?</label>
+    <textarea id="b14_adhd_wish" name="b14_adhd_wish" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b15_everyday_moments"><span class="id">B15</span>Which everyday moments from your own ADHD would you show or tell?</label>
+    <div class="hint">Forgetting a name mid-conversation, a missed promise, a morning that fell apart, a system you built to cope.</div>
+    <textarea id="b15_everyday_moments" name="b15_everyday_moments"></textarea>
+  </div>
+
+  <div class="field">
+    <span class="q" id="b16_label"><span class="id">B16</span>How do you want to speak about it?</span>
+    <div class="chips" data-for="b16_adhd_stance" role="group" aria-labelledby="b16_label">
+      <label><input type="checkbox" value="From lived experience"><span>From lived experience</span></label>
+      <label><input type="checkbox" value="As an advocate"><span>As an advocate</span></label>
+      <label><input type="checkbox" value="With experts and research alongside me"><span>With experts and research alongside me</span></label>
+    </div>
+    <input type="hidden" id="b16_adhd_stance" name="b16_adhd_stance">
+    <label class="sub" for="b16_adhd_not_cover">Which ADHD subjects would you rather not cover? Medication, diagnosis advice, treatment.</label>
+    <textarea id="b16_adhd_not_cover" name="b16_adhd_not_cover" class="short"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">B / 06</span>
+    <h3>Style and voice</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <span class="q" id="b17_label"><span class="id">B17</span>How do you want to sound?</span>
+    <div class="hint">Tap up to five.</div>
+    <div class="chips" data-for="b17_tone" role="group" aria-labelledby="b17_label">
+      <label><input type="checkbox" value="Calm"><span>Calm</span></label>
+      <label><input type="checkbox" value="Funny"><span>Funny</span></label>
+      <label><input type="checkbox" value="Blunt"><span>Blunt</span></label>
+      <label><input type="checkbox" value="Warm"><span>Warm</span></label>
+      <label><input type="checkbox" value="Nerdy"><span>Nerdy</span></label>
+      <label><input type="checkbox" value="Vulnerable"><span>Vulnerable</span></label>
+      <label><input type="checkbox" value="Polished"><span>Polished</span></label>
+      <label><input type="checkbox" value="Raw"><span>Raw</span></label>
+    </div>
+    <input type="hidden" id="b17_tone" name="b17_tone">
+    <label class="sub" for="b17_captions">How do you write captions: long or short, emojis or none? Any word of your own that I missed?</label>
+    <textarea id="b17_captions" name="b17_captions" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b18_admired"><span class="id">B18</span>Whose content would you love yours to feel like?</label>
+    <div class="hint">Up to three creators or founders, with handles or links, and what you like about each. They don't need to be in your industry.</div>
+    <textarea id="b18_admired" name="b18_admired"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b19_not_like"><span class="id">B19</span>What do you not want to look like?</label>
+    <div class="hint">Hustle-culture founders, heavily scripted reels, trending audio and dances, clickbait hooks. Name accounts if it helps.</div>
+    <textarea id="b19_not_like" name="b19_not_like" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b20_feed_look"><span class="id">B20</span>How should the feed look?</label>
+    <div class="hint">Clean and editorial like the Legend site, casual phone footage, text-led, a mix. Mention colours or fonts if you have a preference.</div>
+    <textarea id="b20_feed_look" name="b20_feed_look" class="short"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">B / 07</span>
+    <h3>On camera</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <span class="q" id="b21_label"><span class="id">B21</span>Which formats suit you?</span>
+    <div class="chips" data-for="b21_formats" role="group" aria-labelledby="b21_label">
+      <label><input type="checkbox" value="Talking to camera"><span>Talking to camera</span></label>
+      <label><input type="checkbox" value="Voiceover on footage"><span>Voiceover on footage</span></label>
+      <label><input type="checkbox" value="Podcast or interview clips"><span>Podcast or interview clips</span></label>
+      <label><input type="checkbox" value="Carousels"><span>Carousels</span></label>
+      <label><input type="checkbox" value="Photos with long captions"><span>Photos with long captions</span></label>
+      <label><input type="checkbox" value="Stories"><span>Stories</span></label>
+      <label><input type="checkbox" value="Written LinkedIn posts"><span>Written LinkedIn posts</span></label>
+    </div>
+    <input type="hidden" id="b21_formats" name="b21_formats">
+    <label class="sub" for="b21_camera_comfort">What do you enjoy and what do you dread? Do you prefer bullet points or a full script?</label>
+    <textarea id="b21_camera_comfort" name="b21_camera_comfort" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b22_existing_material"><span class="id">B22</span>What existing material can I use?</label>
+    <div class="hint">Podcast or interview recordings, talks, old videos, photos, product footage, anything you've written. Links are perfect.</div>
+    <textarea id="b22_existing_material" name="b22_existing_material"></textarea>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">B / 08</span>
+    <h3>Boundaries, and anything I missed</h3>
+  </div>
+  <div class="sec-body">
+
+  <div class="field">
+    <label class="q" for="b23_avoid"><span class="id">B23</span>Is there anything you want me to avoid completely?</label>
+    <div class="hint">Topics, people, family, politics, health claims, competitors, pricing or discounts, humour that isn't you.</div>
+    <textarea id="b23_avoid" name="b23_avoid" class="short"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="q" for="b24_anything_else"><span class="id">B24</span>What else should I know?</label>
+    <div class="hint">Hobbies, routines, places you spend time, launches or events coming up, things you're excited or nervous about. Also whether Zach should have a part in the content.</div>
+    <textarea id="b24_anything_else" name="b24_anything_else"></textarea>
+  </div>
+
+  <div class="field">
+    <span class="q">Attach a file</span>
+    <div class="hint">Reviews export, brand guidelines, a deck, screenshots. Only one file can be attached, so zip them together if you have several.</div>
+    <label class="dropzone" for="attachments" id="dropzoneLabel">
+      <span class="dz-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </span>
+      <strong>Click to choose a file</strong> or drag it here
+      <div class="dz-sub">One file. PDF, doc, CSV, screenshot or a zip.</div>
+      <input type="file" id="attachments" name="attachments">
+    </label>
+    <div class="file-list" id="fileList"></div>
+  </div>
+  </div>
+</section>
+
+<div class="submit-block">
+  <button type="submit">Submit questionnaire</button>
+  <p class="submit-note">Half-finished is fine. Send what you have and add the rest on Slack.</p>
+</div>
+
+</form>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('qform');
+  var KEY = 'legend-saba-questionnaire-v1';
+  var savedEl = document.getElementById('saved');
+  var countEl = document.getElementById('count');
+  var totalEl = document.getElementById('total');
+  var meter = document.getElementById('meter');
+
+  var fields = Array.prototype.slice.call(
+    form.querySelectorAll('textarea[name], input[type="text"][name], input[type="email"][name], input[type="hidden"][name]')
+  );
+  var groups = Array.prototype.slice.call(form.querySelectorAll('.chips[data-for]'));
+
+  function syncGroup(g) {
+    var picked = Array.prototype.slice.call(g.querySelectorAll('input:checked')).map(function (c) { return c.value; });
+    document.getElementById(g.getAttribute('data-for')).value = picked.join('; ');
+  }
+
+  function progress() {
+    var done = fields.filter(function (f) { return f.value.trim() !== ''; }).length;
+    countEl.textContent = done;
+    totalEl.textContent = fields.length;
+    meter.style.width = (fields.length ? (done / fields.length) * 100 : 0) + '%';
+  }
+
+  function save() {
+    var data = {};
+    fields.forEach(function (f) { if (f.value !== '') data[f.name] = f.value; });
+    try {
+      localStorage.setItem(KEY, JSON.stringify(data));
+      savedEl.textContent = '/ saved on this device';
+    } catch (e) { savedEl.textContent = ''; }
+  }
+
+  function restore() {
+    var data;
+    try { data = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { data = {}; }
+    fields.forEach(function (f) { if (typeof data[f.name] === 'string') f.value = data[f.name]; });
+    groups.forEach(function (g) {
+      var picked = document.getElementById(g.getAttribute('data-for')).value.split('; ');
+      Array.prototype.forEach.call(g.querySelectorAll('input'), function (c) { c.checked = picked.indexOf(c.value) !== -1; });
+    });
+    if (Object.keys(data).length) savedEl.textContent = '/ saved on this device';
+  }
+
+  var timer;
+  function changed() {
+    progress();
+    clearTimeout(timer);
+    timer = setTimeout(save, 300);
+  }
+
+  restore();
+  progress();
+  form.addEventListener('input', changed);
+  groups.forEach(function (g) {
+    g.addEventListener('change', function () { syncGroup(g); changed(); });
+  });
+  form.addEventListener('submit', function () { groups.forEach(syncGroup); save(); });
+
+  /* File picker */
+  var input = document.getElementById('attachments');
+  var list = document.getElementById('fileList');
+  var zone = document.getElementById('dropzoneLabel');
+
+  function renderFiles(files) {
+    list.textContent = '';
+    Array.prototype.forEach.call(files, function (f) {
+      var chip = document.createElement('div');
+      chip.className = 'chip';
+      var dot = document.createElement('span'); dot.className = 'dot';
+      var name = document.createElement('span'); name.textContent = f.name;
+      var size = document.createElement('span'); size.className = 'size';
+      size.textContent = f.size > 1048576 ? (f.size / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(f.size / 1024)) + ' KB';
+      chip.appendChild(dot); chip.appendChild(name); chip.appendChild(size);
+      list.appendChild(chip);
+    });
+  }
+  input.addEventListener('change', function () { renderFiles(input.files); });
+  ['dragover', 'dragenter'].forEach(function (ev) {
+    zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.add('drag'); });
+  });
+  ['dragleave', 'drop'].forEach(function (ev) {
+    zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.remove('drag'); });
+  });
+  zone.addEventListener('drop', function (e) {
+    if (e.dataTransfer && e.dataTransfer.files.length) {
+      try {
+        var dt = new DataTransfer();
+        dt.items.add(e.dataTransfer.files[0]);
+        input.files = dt.files;
+        renderFiles(input.files);
+      } catch (err) {}
+    }
+  });
+})();
+</script>
+</body>
+</html>
